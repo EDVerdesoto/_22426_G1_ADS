@@ -1,0 +1,65 @@
+classDiagram
+    direction LR
+
+    %% -------------------
+    %% DATA LAYER (Tablas)
+    %% -------------------
+    namespace domain {
+        class Vehicles {
+            +Int idVehicle
+            +Text licensePlate
+            +Text brand
+            +Int mileage
+            +VehicleStatus status
+        }
+
+        class Drivers {
+            +Int idDriver
+            +Text firstName
+            +Text lastName
+            +Text idNumber
+        }
+
+        class Routes {
+            +Int idRoute
+            +DateTime date
+        }
+
+        class Stops {
+            +Int idStop
+            +Real latitude
+            +Real longitude
+        }
+
+        class Maintenances {
+            +Int idMaintenance
+            +DateTime maintenanceDate
+            +Int vehicleMileage
+        }
+
+        class MaintenanceDetails {
+            +Int idDetail
+            +Text description
+            +Real cost
+        }
+
+        class RouteAssignments {
+            +Int idAssignment
+            +DateTime assignedAt
+        }
+
+        class GpsDevices
+        class ObdDevices
+    }
+
+    %% -------------------
+    %% RELACIONES (FK)
+    %% -------------------
+    Vehicles "1" -- "0..1" Drivers         : "tiene asignado"
+    Vehicles "1" -- "0..1" GpsDevices      : "tiene"
+    Vehicles "1" -- "0..1" ObdDevices      : "tiene"
+    Vehicles "1" -- "0..*" Maintenances    : "recibe"
+    Maintenances "1" -- "1..*" MaintenanceDetails : "contiene"
+    Routes "1" -- "1..*" Stops             : "compuesta por"
+    RouteAssignments "1" -- "1" Routes     : "asigna"
+    RouteAssignments "1" -- "1" Vehicles   : "a"
