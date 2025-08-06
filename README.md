@@ -11,7 +11,7 @@
 
 ## Índice de Contenidos
 
-- [Código](https://github.com/EDVerdesoto/_22426_G1_ADS/tree/main/CODIGO)
+- [Código](https://github.com/EDVerdesoto/_22426_G1_ADS/tree/main/CODIGO/SD)
 - [Documentos](https://github.com/EDVerdesoto/_22426_G1_ADS/tree/main/DOCUMENTOS)
 - [Postgame](https://github.com/EDVerdesoto/_22426_G1_ADS/tree/main/POSTGAME)
 - [Pregame](https://github.com/EDVerdesoto/_22426_G1_ADS/tree/main/PREGAME)
