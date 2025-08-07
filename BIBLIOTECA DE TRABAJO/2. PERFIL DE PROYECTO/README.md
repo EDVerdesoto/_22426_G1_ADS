@@ -15,7 +15,7 @@ Este directorio contiene los documentos que forman parte del Elemento de Configu
 
 ## Información del Elemento de Configuración del Software (ECS) - PDL
 
-* **Código del ECS:** 
+* **Código del ECS:** PDL
 * **Nombre del ECS:** Archivo de especificacion de requisitos
 * **Autor:** Grupo 1 NRC22426 (Ruben Benavides, Joan Cobeña, Juan Pasquel, Edison Verdesoto)
 * **Nombre del proyecto al que pertenece el ECS:** BIBLIOTECA DE TRABAJO
