@@ -1,8 +1,8 @@
-## Cronograma de Actividades (PDP)
+## Cronograma de Actividades (CRONO)
 Este directorio contiene los documentos que forman parte del Elemento de Configuración del Software (ECS) relacionado con el cronograma de actividades del sistema CareRoutes.
 ## Información del Elemento de Configuración del Software (ECS) - Cronograma de Actividades
 
-* **Código del ECS:** PDP
+* **Código del ECS:** CRONO
 * **Nombre del ECS:** Cronograma de actividades
 * **Autor:** Grupo 1 NRC22426 (Ruben Benavides, Joan Cobeña, Juan Pasquel, Edison Verdesoto)
 * **Nombre del proyecto al que pertenece el ECS:** BIBLIOTECA DE TRABAJO
