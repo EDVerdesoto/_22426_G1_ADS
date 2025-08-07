@@ -13,7 +13,7 @@
 
 ## Información del Elemento de Configuración del Software (ECS) - README.md
 
-* **Código del ECS:** README.md
+* **Código del ECS:** RCS
 * **Nombre del ECS:** Archivo de descripción y guía del proyecto
 * **Autor:** Grupo 1 NRC22426 (Ruben Benavides, Joan Cobeña, Juan Pasquel, Edison Verdesoto)
 * **Nombre del proyecto al que pertenece el ECS:** BIBLIOTECA DE TRABAJO
