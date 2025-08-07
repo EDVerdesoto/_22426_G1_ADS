@@ -2,7 +2,7 @@
 Este directorio contiene los documentos que forman parte del Elemento de Configuración del Software (ECS) relacionado con las Pruebas Unitarias del sistema CareRoutes.
 ## Información del Elemento de Configuración del Software (ECS) - Matriz de Requisitos IREB
 
-* **Código del ECS:** 
+* **Código del ECS:**PU
 * **Nombre del ECS:** Pruebas Unitarias
 * **Autor:** Grupo 1 NRC22426 (Ruben Benavides, Joan Cobeña, Juan Pasquel, Edison Verdesoto)
 * **Nombre del proyecto al que pertenece el ECS:** BIBLIOTECA DE TRABAJO
