@@ -1,4 +1,12 @@
 //main.dart
+import 'package:care_routes/domain/use_cases/assign_route_usecase.dart';
+import 'package:care_routes/domain/use_cases/create_route_usecase.dart';
+import 'package:care_routes/domain/use_cases/get_assigned_vehicles_usecase.dart';
+import 'package:care_routes/domain/use_cases/get_routes_with_assignments_usecase.dart';
+import 'package:care_routes/domain/use_cases/manage_route_assginments_usecase.dart';
+import 'package:care_routes/domain/use_cases/search_route_usecase.dart';
+import 'package:care_routes/domain/use_cases/update_route_usecase.dart';
+import 'package:care_routes/presentation/viewmodels/route_management_viewmodel.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +25,7 @@ import 'package:care_routes/data/local_repository/database.dart';
 import 'package:get_it/get_it.dart';
 import 'package:care_routes/domain/use_cases/vehicle_location_usecase.dart';
 import 'package:sqlite3/sqlite3.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:care_routes/domain/use_cases/reports_usecase.dart';
 import 'data/local_repository/daos/daos.dart';
 import 'presentation/views/error_app.dart';
@@ -127,6 +136,55 @@ Future<void> _setupDependencies() async {
     ),
   );
 
+
+  getIt.registerSingleton<CreateRouteUseCase>(
+    CreateRouteUseCase(
+      routesDao: database.routesDao,
+      stopsDao: database.stopsDao,
+    ),
+  );
+
+  getIt.registerSingleton<AssignRouteUseCase>(
+    AssignRouteUseCase(
+      routeAssignmentsDao: database.routeAssignmentsDao,
+    ),
+  );
+
+  getIt.registerSingleton<SearchRoutesUseCase>(
+    SearchRoutesUseCase(
+      routesDao: database.routesDao,
+      stopsDao: database.stopsDao,
+    ),
+  );
+
+  getIt.registerSingleton<ManageRouteAssignmentsUseCase>(
+    ManageRouteAssignmentsUseCase(
+      routeAssignmentsDao: database.routeAssignmentsDao,
+    ),
+  );
+
+  getIt.registerSingleton<UpdateRouteUseCase>(
+    UpdateRouteUseCase(
+      routesDao: database.routesDao, 
+      stopsDao: database.stopsDao
+    )
+  );
+
+  getIt.registerSingleton<GetAssignedVehiclesUseCase>(
+    GetAssignedVehiclesUseCase(
+      vehiclesDao: database.vehiclesDao, 
+      assignmentsDao: database.routeAssignmentsDao
+    )
+  );
+
+  getIt.registerSingleton<GetRoutesWithAssignmentsUseCase>(
+    GetRoutesWithAssignmentsUseCase(
+      routesDao: database.routesDao, 
+      stopsDao: database.stopsDao, 
+      assignmentsDao: database.routeAssignmentsDao, 
+      vehiclesDao: database.vehiclesDao
+    )
+  );
 }
 
 class CareRoutesApp extends StatelessWidget {
@@ -161,8 +219,28 @@ class CareRoutesApp extends StatelessWidget {
             reportsUseCase: GetIt.instance<ReportsUseCase>(),
           ),
         ),
+        ChangeNotifierProvider<RouteManagementViewModel>(
+          create: (context) => RouteManagementViewModel(
+            createRouteUseCase: GetIt.instance<CreateRouteUseCase>(),
+            assignRouteUseCase: GetIt.instance<AssignRouteUseCase>(),
+            searchRoutesUseCase: GetIt.instance<SearchRoutesUseCase>(),
+            manageAssignmentsUseCase: GetIt.instance<ManageRouteAssignmentsUseCase>(),
+            updateRouteUseCase: GetIt.instance<UpdateRouteUseCase>(),
+            getAssignedVehiclesUseCase: GetIt.instance<GetAssignedVehiclesUseCase>(),
+            getRoutesWithAssignmentsUseCase: GetIt.instance<GetRoutesWithAssignmentsUseCase>(),
+          ),
+        ),
       ],
       child: MaterialApp(
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('es', 'ES'),
+        ],
         title: 'CareRoutes',
         theme: mainTheme,
         home: const HomeState(),
